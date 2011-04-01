@@ -101,11 +101,16 @@
     self.contentSizeForViewInPopover = [self getContentSizeInPopover];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSInteger DESK_NO = [userDefault integerForKey:@"DESK_NO"];
+    NSString *deskTitle = [NSString stringWithFormat:@"第%d桌",DESK_NO];
+    
+    self.title = deskTitle;
+    self.navigationItem.prompt = nil;
+    
     //self.title = [NSString stringWithFormat:@"第%d桌",DESK_NO];
     
     //self.navigationItem.
     //self.navigationItem.prompt = nil;
-    self.title = @"點餐清單";
+    //self.title = @"點餐清單";
     //label.font = [UIFont fontWithName:label.font.fontName size:50];
     //[test removeFromSuperview];
     //[self.navigationController.navigationBar addSubview:label];

@@ -91,7 +91,7 @@
 		B96FE0C812A9DFB200A5D08A /* orange_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = B96FE0C712A9DFB200A5D08A /* orange_circle.png */; };
 		B96FE16412AA29B200A5D08A /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = B96FE16312AA29B200A5D08A /* paper.png */; };
 		B96FE16A12AA358700A5D08A /* menuct.png in Resources */ = {isa = PBXBuildFile; fileRef = B96FE16912AA358700A5D08A /* menuct.png */; };
-		B97288D212449AA70061A614 /* padOrder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B97288D112449AA70061A614 /* padOrder.xcdatamodeld */; };
+		B97288D212449AA70061A614 /* PadOrder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B97288D112449AA70061A614 /* PadOrder.xcdatamodeld */; };
 		B972890312449CCA0061A614 /* padOrderDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B972890212449CCA0061A614 /* padOrderDataManager.m */; };
 		B97479D5129275A700F73358 /* UniversialBarButtomItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B97479D4129275A700F73358 /* UniversialBarButtomItem.m */; };
 		B97479DC1292766A00F73358 /* VarsBarButtomItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B97479DB1292766A00F73358 /* VarsBarButtomItem.m */; };
@@ -293,7 +293,7 @@
 		9183EFA41329701D00A1CA52 /* PONavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PONavigationBar.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		91848B99132BEDA4005C75AC /* PadOrder-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PadOrder-Info.plist"; sourceTree = "<group>"; };
 		91848BA2132BF0F7005C75AC /* PadOrder行動點餐.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PadOrder行動點餐.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		918EC36413406AF90008E27F /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/BeginView.xib"; sourceTree = "<group>"; };
+		918EC36413406AF90008E27F /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/BeginView.xib"; sourceTree = "<group>"; };
 		9193ABF91329349100790AF1 /* no_image.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = no_image.gif; sourceTree = "<group>"; };
 		9193ABFB1329382C00790AF1 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_image.png; sourceTree = "<group>"; };
 		91A17837132D3EE500D8E3C9 /* cellAddButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellAddButton.png; sourceTree = "<group>"; };
@@ -553,7 +553,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B97288D112449AA70061A614 /* padOrder.xcdatamodeld */,
+				B97288D112449AA70061A614 /* PadOrder.xcdatamodeld */,
 				B93019AA123A6788007A4F8E /* Xib檔 */,
 			);
 			path = Resources;
@@ -1296,7 +1296,7 @@
 				B9E59236123925720040CBEC /* OrderedDetailViewController.m in Sources */,
 				B9E5926012392C380040CBEC /* padOrderAlertViewDelegate.m in Sources */,
 				B9301C63123BC868007A4F8E /* MemberViewController.m in Sources */,
-				B97288D212449AA70061A614 /* padOrder.xcdatamodeld in Sources */,
+				B97288D212449AA70061A614 /* PadOrder.xcdatamodeld in Sources */,
 				B972890312449CCA0061A614 /* padOrderDataManager.m in Sources */,
 				B9FD363C1245D49200F5553F /* DishDataTableViewController.m in Sources */,
 				B9AC7905124891EE00CF132F /* padOrder.xcdatamodel in Sources */,
@@ -1505,12 +1505,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B97288D112449AA70061A614 /* padOrder.xcdatamodeld */ = {
+		B97288D112449AA70061A614 /* PadOrder.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				B9AC7904124891EE00CF132F /* padOrder.xcdatamodel */,
 			);
 			currentVersion = B9AC7904124891EE00CF132F /* padOrder.xcdatamodel */;
+			name = PadOrder.xcdatamodeld;
 			path = padOrder.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

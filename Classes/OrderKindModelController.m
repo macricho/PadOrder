@@ -23,6 +23,7 @@
 
 - (NSArray *)segmentTitleArrayWithTypeNo:(NSNumber *)segmentNo{
     //(@"1");
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Segment_Type=%@",segmentNo];
     [fetchRequest setEntity:[NSEntityDescription entityForName:@"Dish_Kind" inManagedObjectContext:managedObjectContext]];
@@ -30,6 +31,7 @@
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     [fetchRequest setPredicate:predicate];
     NSArray *array = [managedObjectContext executeFetchRequest:fetchRequest error:nil];
+
     return array;
 }
 

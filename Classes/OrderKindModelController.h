@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "padOrderModelObject.h"
+#import "EntityOrderKind.h"
 #import "Stack.h"
 
 @interface OrderKindModelController : padOrderModelObject {

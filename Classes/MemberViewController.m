@@ -11,6 +11,8 @@
 
 @implementation MemberViewController
 @synthesize fb;
+@synthesize account;
+@synthesize password;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -30,12 +32,15 @@
 
 
 - (IBAction) login:(id)sender{
-    NSString *padOrderID = @"172228222789173";
+    //NSString *padOrderID = @"172228222789173";
     
-    NSArray *permissions =  [NSArray arrayWithObjects:@"read_stream", @"offline_access",nil];
-    [self.fb authorize: padOrderID permissions:permissions delegate:self];
+    //NSArray *permissions =  [NSArray arrayWithObjects:@"read_stream", @"offline_access",nil];
+    //[self.fb authorize: padOrderID permissions:permissions delegate:self];
     
     //[fb logout:self];
+    NSLog(@"%@",self.account.text);
+    NSLog(@"%@",self.password.text);
+    
 }
 
 
