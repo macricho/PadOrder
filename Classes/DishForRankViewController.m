@@ -36,6 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.topTitleLabel.text = @"Ranking";
+    self.navigationItem.prompt = @"人氣排行";
     //self.bgTopImageView.image = [UIImage imageNamed:@"tableViewBgTopRank.png"];
     //[self.tableViewController setNavigationController:self.navigationController];
 }

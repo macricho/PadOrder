@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "EntityRefer.h"
-
+#import "EntityDish.h"
 @interface EntityDescribe : EntityRefer {
 
 }
 
 @property (nonatomic, retain) NSString *Describe_Complete;
 @property (nonatomic, retain) NSString *Describe_Simple;
-
+@property (nonatomic, retain) EntityDish *Dish;
 @end

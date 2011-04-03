@@ -10,7 +10,7 @@
 
 
 @implementation EntityDescribe
-@synthesize Describe_Complete;
-@synthesize Describe_Simple;
-
+@dynamic Describe_Complete;
+@dynamic Describe_Simple;
+@dynamic Dish;
 @end

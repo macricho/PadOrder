@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "padOrderLandscapeViewController.h"
 #import "PadOrderLogoViewController.h"
-@interface BeginViewController : padOrderLandscapeViewController {
+@interface BeginViewController : padOrderLandscapeViewController<UIAlertViewDelegate> {
     UIButton *infoButton;
     NSInteger nextIndex;
     PadOrderLogoViewController *logoViewController;

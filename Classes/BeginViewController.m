@@ -19,8 +19,31 @@
 @synthesize testController;
 
 - (IBAction) actionToNext:(id)sender{
-    [self.padOrderDelegate actionToNext:sender];
+    UIButton *button = (UIButton *)sender;
+    if (button.tag == 1){
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"確認身分" message:@"請輸入會員資格之身分證字號" delegate:self cancelButtonTitle:@"略過(非會員)" otherButtonTitles:@"確定", nil];
+        [alertView show];
+    }
+    else{
+        [self.padOrderDelegate actionToNext:sender];
+    }
 }
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    switch (buttonIndex) {
+        case 0://非會員
+            button.tag = 1;
+            [self.padOrderDelegate actionToNext:button];
+            break;
+        case 1://會員，並確認他輸入的部份
+            break;
+        default:
+            break;
+    }
+}
+
 
 #pragma mark -
 #pragma mark  program life-circle
