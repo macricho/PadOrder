@@ -19,6 +19,9 @@
 @synthesize buttonBgPicName;
 @synthesize hotValue;
 @synthesize detailButtonBgPicName;
+@synthesize isExistDishImage;
+
+
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PODishDataTableViewController.h"
 
 @class OrderedInfoModelController;
 @class DishTableCellView;
@@ -22,7 +23,9 @@
 @class SetInfomationViewController;
 @class DishForOrderViewController;
 @class VarsButton;
-@interface DishDataTableViewController : UITableViewController<UITableViewDelegate,UIActionSheetDelegate> {
+
+@interface DishDataTableViewController : PODishDataTableViewController<UITableViewDelegate,UIActionSheetDelegate,UITableViewDataSource> {
+    
     NSDictionary *dataDictionary;
     DishTableCellView *tableCellView;
     DishForOrderViewController *dishMenuViewController;
@@ -33,9 +36,9 @@
     MoveAnimationController *moveAnimationController;
     UIPopoverController *popoverController;
     SetInfomationViewController *setInfoViewController;
-    BOOL onSearch;
     UITextField *dishCountTextField;
     VarsButton *adderButton;
+    BOOL onSearch;
 }
 @property (nonatomic) BOOL onSearch;
 @property (nonatomic, retain) UIPopoverController *popoverController;
@@ -52,7 +55,7 @@
 @property (nonatomic, retain) UITextField *dishCountTextField;
 @property (nonatomic, retain) VarsButton *adderButton;
 
-
+- (UIImage *) cuttingPictureForCellFormat:(UIImage *)image;
 - (void) showSetScetionInfo:(id)sender;
 - (void) buttonAction:(id)sender;
 - (void) buttonDetail:(id)sender;

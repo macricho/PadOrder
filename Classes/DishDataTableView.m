@@ -15,6 +15,8 @@
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         // Initialization code
+        //self.delegate = self.dishDataTableViewController;
+        //self.dataSource = self.dishDataTableViewController;
         
     }
     return self;
@@ -22,6 +24,8 @@
 
 - (id) initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
     if(self = [super initWithFrame:frame style:style]){
+        //self.delegate = self.dishDataTableViewController;
+        //self.dataSource = self.dishDataTableViewController;
         
     }
     return self;

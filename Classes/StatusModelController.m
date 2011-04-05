@@ -36,7 +36,7 @@
     NSArray *statusArray = [self.managedObjectContext executeFetchRequest:request error:&error];
     EntityStatus *statusObject = (EntityStatus *)[statusArray lastObject];
 
-    NSLog(@"Error:%@",error);
+    //NSLog(@"Error:%@",error);
     
     return statusObject;
 }

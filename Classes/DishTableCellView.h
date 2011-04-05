@@ -21,6 +21,7 @@
     NSString *buttonBgPicName;
     NSString *detailButtonBgPicName;
 	NSInteger hotValue;
+    BOOL isExistDishImage;
 }
 
 @property (nonatomic, retain) NSString *buttonBgPicName;
@@ -32,6 +33,7 @@
 @property (nonatomic, retain) NSNumber *dishPrice;
 @property (nonatomic, retain) UITableViewController *dataTableViewController;
 @property (nonatomic) NSInteger hotValue;
+@property (nonatomic) BOOL isExistDishImage;
 //- (void) setDishPicture:(NSString *)imageName;
 //- (void) setSubmitButton:(NSString *)normal onPressed:(NSString *)pressed;
 @end

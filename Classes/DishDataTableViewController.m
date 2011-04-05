@@ -82,16 +82,27 @@
     
     DishTableCellView *cell = nil;
     UIImageView *dishImageView = nil;
+    CGRect startFrame;
+    CGRect endFrame;
+    CGRect topRectToVisible;
     
     cell = (DishTableCellView *)[self.tableView cellForRowAtIndexPath:self.adderButton.indexPath];
-    dishImageView = [[UIImageView alloc] initWithImage:cell.dishImageView.image];
     
     UIColor *cellMoveBeginBgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tableViewBgPattern.png"]];
     self.orderedListViewController = [[[[self.appDelegate mainSplitViewController].viewControllers objectAtIndex:0] viewControllers] objectAtIndex:0];
     
     OrderedInfoModelController *orderedInfoModelController =  [[OrderedInfoModelController alloc] init];
+    
     EntityDish *dish = (EntityDish *)self.adderButton.managerObject;
     
+    UIImage *dishImage = cell.dishImageView.image;
+    if(cell.isExistDishImage){
+         dishImage = [UIImage imageWithContentsOfFile:[[dish getURLForMainImageFullPath] path]];
+        dishImage = [self cuttingPictureForCellFormat:dishImage];
+    }
+    
+    dishImageView = [[UIImageView alloc] initWithImage:dishImage];
+    //dishImageView.backgroundColor = [UIColor clearColor];
     BOOL alreadyVisible = [orderedInfoModelController isExistWithDish:dish];
     
     //插入點菜的餐點到已點的餐點列表
@@ -119,47 +130,17 @@
     if(!alreadyVisible) orderedCell.hidden = YES;
     
     if (self.adderButton.isDetail) {
-        UIImageView *dishImageView = [[UIImageView alloc] initWithImage:self.detailViewController.dishImageView.image];
-        
-        //找出該cell在整個window 的絕對位置
-        //CGRect topRectToVisible = self.tableView.layer.visibleRect; //可以抓到tableView"出現"的左上角的點座標大小
+        dishImageView = [[UIImageView alloc] initWithImage:self.detailViewController.dishImageView.image];
         
         //先換算座標系統到window的座標上
-        //CGRect startFrame = [self.moveAnimationController relativeToAbsolute:cell];
-        CGRect startFrame = [self.moveAnimationController relativeToAbsolute:self.detailViewController.dishImageView];
-        //透過顯示的點座標，取得目前Cell的座標位置
-        //startFrame = CGRectMake(startFrame.origin.x,  startFrame.origin.y - topRectToVisible.origin.y, cell.frame.size.width, cell.frame.size.height);
-        
-        //startFrame = CGRectMake(startFrame.origin.x,  startFrame.origin.y - topRectToVisible.origin.y, startFrame.size.width, startFrame.size.height);
-        
-        CGRect endFrame = CGRectZero;
-        //self.navigationController.hidesBottomBarWhenPushed = YES;
-        
-        switch([[UIApplication sharedApplication] statusBarOrientation]){
-            case UIDeviceOrientationLandscapeRight:
-            case UIDeviceOrientationLandscapeLeft: 
-                endFrame = [self.moveAnimationController relativeToAbsolute:orderedCell.imageView];
-                break;
-        }
-        
-        //topRectToVisible = self.orderedListViewController.tableView.layer.visibleRect;
-        //endFrame = CGRectMake(endFrame.origin.x, endFrame.origin.y - topRectToVisible.origin.y, endFrame.size.width, endFrame.size.height);
-        
-        self.moveAnimationController.beAnimation = dishImageView;
-        self.moveAnimationController.startFrame = startFrame;
-        self.moveAnimationController.endFrame = endFrame;
-        self.moveAnimationController.startBgColor = cellMoveBeginBgColor;
-        self.moveAnimationController.endAlpha = 0;
-        [self.moveAnimationController action];
-        
-        [self performSelector:@selector(reloadTableViewAfterAnimationWithIndexPath:) withObject:selectedIndexPath afterDelay:0.85];
-        
-        //[self reloadTableViewAfterAnimationWithIndexPath:selectedIndexPath];
+        startFrame = [self.moveAnimationController relativeToAbsolute:self.detailViewController.dishImageView];
+
+
     }
     else{
         
         //找出該cell在整個window 的絕對位置
-        CGRect topRectToVisible = self.tableView.layer.visibleRect; //可以抓到tableView"出現"的左上角的點座標大小
+        topRectToVisible = self.tableView.layer.visibleRect; //可以抓到tableView"出現"的左上角的點座標大小
         
         if(self.onSearch) {
             topRectToVisible = self.searchDisplayController.searchResultsTableView.layer.visibleRect;
@@ -169,48 +150,38 @@
 
         
         //先換算座標系統到window的座標上
-        CGRect startFrame = [self.moveAnimationController relativeToAbsolute:cell.dishImageView];
+        startFrame = [self.moveAnimationController relativeToAbsolute:cell.dishImageView];
         //透過顯示的點座標，取得目前Cell的座標位置
-        //startFrame = CGRectMake(startFrame.origin.x,  startFrame.origin.y - topRectToVisible.origin.y, cell.frame.size.width, cell.frame.size.height);
-        
-        startFrame = CGRectMake(startFrame.origin.x,  startFrame.origin.y - topRectToVisible.origin.y, cell.dishImageView.frame.size.width, cell.dishImageView.frame.size.height);
 
-        CGRect endFrame = CGRectZero;
-        //self.navigationController.hidesBottomBarWhenPushed = YES;
-        
-        switch([UIApplication sharedApplication].statusBarOrientation){
-            case UIDeviceOrientationLandscapeRight:
-            case UIDeviceOrientationLandscapeLeft: 
-                endFrame = [self.moveAnimationController relativeToAbsolute:orderedCell.imageView];
-                break;
-        }
-        
-        topRectToVisible = self.orderedListViewController.tableView.layer.visibleRect;
-        endFrame = CGRectMake(endFrame.origin.x, endFrame.origin.y - topRectToVisible.origin.y, endFrame.size.width, endFrame.size.height);
-        
-        //cell.accessoryType = UITableViewCellAccessoryNone;
-        //UIImageView *dishView = 
-        //NSLog(@"%@",cell.dishImageView.image)
-        
-        //[cell addSubview:dishView];
-        
-        self.moveAnimationController.beAnimation = dishImageView;
-        self.moveAnimationController.startFrame = startFrame;
-        self.moveAnimationController.endFrame = endFrame;
-        self.moveAnimationController.startBgColor = cellMoveBeginBgColor;
-        self.moveAnimationController.endAlpha = 0;
-        [self.moveAnimationController action];
-        
-        //cell.submitButton.hidden = NO;
-        if(cell.accessoryType) cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-        
-        [self performSelector:@selector(reloadTableViewAfterAnimationWithIndexPath:) withObject:selectedIndexPath afterDelay:0.85];
-        //NSArray *array = [NSArray arrayWithObject:button.indexPath];
-        
-        //[self.tableView reloadRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationNone];
+        startFrame = CGRectMake(startFrame.origin.x,  startFrame.origin.y - topRectToVisible.origin.y, cell.dishImageView.frame.size.width, cell.dishImageView.frame.size.height);
         
     }
-
+    
+    endFrame = CGRectZero;
+    //self.navigationController.hidesBottomBarWhenPushed = YES;
+    
+    switch([[UIApplication sharedApplication] statusBarOrientation]){
+        case UIDeviceOrientationLandscapeRight:
+        case UIDeviceOrientationLandscapeLeft: 
+            endFrame = [self.moveAnimationController relativeToAbsolute:orderedCell.imageView];
+            break;
+    }
+    
+    topRectToVisible = self.orderedListViewController.tableView.layer.visibleRect;
+    
+    endFrame = CGRectMake(endFrame.origin.x, endFrame.origin.y - topRectToVisible.origin.y, endFrame.size.width, endFrame.size.height);
+    
+    self.moveAnimationController.beAnimation = dishImageView;
+    self.moveAnimationController.startFrame = startFrame;
+    self.moveAnimationController.endFrame = endFrame;
+    self.moveAnimationController.startBgColor = cellMoveBeginBgColor;
+    self.moveAnimationController.endAlpha = 0;
+    [self.moveAnimationController action];
+    
+    //cell.submitButton.hidden = NO;
+    //if(cell.accessoryType) cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    
+    [self performSelector:@selector(reloadTableViewAfterAnimationWithIndexPath:) withObject:selectedIndexPath afterDelay:0.85];
 
 }
 
@@ -284,6 +255,13 @@
     
 }
 */
+
+- (UIImage *) cuttingPictureForCellFormat:(UIImage *)image{
+    CGRect clip = CGRectMake(image.size.width*0.25, image.size.height*0.25, 200, 200);
+    UIImage *cuttedImage = [UIImage imageWithCGImage:CGImageCreateWithImageInRect(image.CGImage , clip)];
+    return cuttedImage;
+}
+
 #pragma mark -
 #pragma mark View lifecycle
 
@@ -444,25 +422,12 @@
     
     //取出對應於fetchedResultsController在indexPath的dishEntity
     EntityDish *dish = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
     //拿到Application Document的位置路徑
     NSString *path = [[self.appDelegate applicationDocumentsDirectory] path];
     
     //implement OrderedInfoModelController 
     OrderedInfoModelController *infoModelController = [[OrderedInfoModelController alloc] init];
-    
-    //取出這個dish的主要圖片
-    EntityImage *mainImageEntity = [[infoModelController entity:@"Dishes_Images" withPredicate:[NSString stringWithFormat:@"Dish.Dish_No=%@ And IsMainImage=YES",dish.Dish_No] sortBy:@"IsMainImage" ascending:YES] objectAtIndex:0];
-    
-    path = [path stringByAppendingPathComponent:mainImageEntity.Image_Path];
-    path = [path stringByAppendingPathComponent:mainImageEntity.Image_FileName];
-    
-    UIImage *pic = [UIImage imageWithContentsOfFile:path];
-    UIImage *showPicture = [UIImage imageNamed:@"no_image.png"];
-    BOOL isPictureNotNULL = pic;
-    if (isPictureNotNULL) {
-        CGRect clip = CGRectMake(pic.size.width*0.25, pic.size.height*0.25, 200, 200);
-        showPicture = [UIImage imageWithCGImage:CGImageCreateWithImageInRect(pic.CGImage , clip)];
-    }
     
     //Cell 的原生程式碼
     static NSString *CellIdentifier = @"Cell";
@@ -482,13 +447,24 @@
 		//cell.spySlider.maximumValue = 100;
 		//cell.spySlider.minimumValue = 0;
 		
+        
+        //取出這個dish的主要圖片;
+        NSURL *picPath = [dish getURLForMainImageFullPath];
+        UIImage *pic = [UIImage imageWithContentsOfFile:[picPath path]];
+        UIImage *showPicture = [UIImage imageNamed:@"no_image.png"];
+        cell.isExistDishImage = (pic != nil);
+        if (cell.isExistDishImage) {
+            cell.isExistDishImage = YES;
+            showPicture = [self cuttingPictureForCellFormat:pic];
+        }
+        cell.dishImage = showPicture;
     }
     cell.submitButton.indexPath = indexPath;
     cell.submitButton.managerObject = dish;
     cell.detailButton.indexPath = indexPath;
     //自定的按鈕類別，可以存一堆變數
     //這裡把indexPath的位置傳給按鈕
-    cell.dishImage = showPicture;
+    
     cell.dishPrice = dish.Dish_Price;
     cell.descriptText = dish.Describe.Describe_Simple;
 	cell.hotValue = 10;

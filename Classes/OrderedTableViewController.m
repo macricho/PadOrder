@@ -140,9 +140,15 @@
     NSEntityDescription *entity = self.orderedDishModelController.entity;
     NSManagedObjectContext *managedObjectContext = self.orderedDishModelController.managedObjectContext;
     UIViewAnimationTransition transition = UIViewAnimationTransitionCurlUp;
+    //NSLog(@"Bu:%d",buttonIndex);
+    
+    
+    buttonIndex += actionSheet.tag;    
+    
+    
     switch (buttonIndex) {
         case 0: 
-            //因為Objective-C 不允許在Switch裡面使用宣告，所以要加上大括號
+            
             //刪除這個編號的全部
             //刪掉的是他所附屬的所有OrderedDish
             [self.orderedInfoModelController deleteInfoAndRelativeOrderedDish:selectedInfo];
@@ -275,22 +281,32 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     EntityOrderedInfo *selected = [fetchedResultsController objectAtIndexPath:indexPath];
     UIActionSheet *sheet = nil;
+    
     switch ([selected.Status.Status_No integerValue]) {
         case 0:
             sheet = [[UIActionSheet alloc] initWithTitle:[NSString 
                                                           stringWithFormat:@"正在修改：%@",selected.Dish.Dish_Name] 
                                                 delegate:self
                                        cancelButtonTitle:@"返回清單" 
-                                  destructiveButtonTitle:@"取消全部份數" 
-                                       otherButtonTitles:@"加點一份",@"刪減一份",nil];            
+                                  destructiveButtonTitle:[NSString stringWithFormat:@"取消全部 %@份",selected.Count] 
+                                       otherButtonTitles:@"加點一份",@"刪減一份",nil];      
+            sheet.tag = 0;
             break;
-        case -1:
-            sheet = [[UIActionSheet alloc] initWithTitle:[NSString 
+        case 1:
+            /*sheet = [[UIActionSheet alloc] initWithTitle:[NSString 
                                                           stringWithFormat:@"正在更改：%@",selected.Dish.Dish_Name] 
                                                 delegate:self
                                        cancelButtonTitle:@"返回清單" 
                                   destructiveButtonTitle:@"取消可更改之最大份數" 
-                                       otherButtonTitles:@"再加點一份",@"悔改一份",nil];            
+                                       otherButtonTitles:@"再加點一份",@"悔改一份",nil];  
+             */
+            sheet = [[UIActionSheet alloc] initWithTitle:[NSString 
+                                                          stringWithFormat:@"正在更改：%@",selected.Dish.Dish_Name] 
+                                                delegate:self
+                                       cancelButtonTitle:@"返回清單" 
+                                  destructiveButtonTitle:nil 
+                                       otherButtonTitles:@"再加點一份",nil];  
+            sheet.tag = 1;
             break;
         default:
             break;
@@ -371,14 +387,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EntityOrderedInfo *orderedInfo = [fetchedResultsController objectAtIndexPath:indexPath];
     
-    NSString *path = [[(padOrderAppDelegate *)[[UIApplication sharedApplication] delegate] applicationDocumentsDirectory] path];
-    
-    EntityImage *mainImageEntity = [[self.orderedInfoModelController entity:@"Dishes_Images" withPredicate:[NSString stringWithFormat:@"Dish.Dish_No=%@ And IsMainImage=YES",orderedInfo.Dish.Dish_No] sortBy:@"IsMainImage" ascending:YES] objectAtIndex:0];
-
-    path = [path stringByAppendingPathComponent:mainImageEntity.Image_Path];
-    path = [path stringByAppendingPathComponent:mainImageEntity.Image_FileName];
-    
-    UIImage *pic = [UIImage imageWithContentsOfFile:path];
+    NSURL *picPath = [orderedInfo.Dish getURLForMainImageFullPath];    
+    UIImage *pic = [UIImage imageWithContentsOfFile:[picPath path]];
     UIImage *showPicture = [UIImage imageNamed:@"no_image.png"];
     
     if (pic) {

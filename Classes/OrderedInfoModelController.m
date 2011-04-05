@@ -118,6 +118,7 @@
 }
 
 - (NSFetchedResultsController *) fetchedDishSelectStatusFrom:(NSInteger)from to:(NSInteger)to{
+
         //Delete Cache avoid Data Error
     [NSFetchedResultsController deleteCacheWithName:@"SelectStatus"];
         //Create a fetch request
@@ -131,14 +132,16 @@
     NSArray *betweenArray = [NSArray arrayWithObjects:fromNumber,toNumber, nil];
     
     //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Status.Status_No >= %d or Status.Status_No <= %d and Will_Show=YES",from,to];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Will_Show=YES"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Will_Show=YES and Status.Status_No >= %@ and Status.Status_No <= %@",fromNumber,toNumber];
+
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Will_Show=YES and Status.Status_No between %@",betweenArray];
         //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"willShow=YES"];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Status.Status_No" ascending:YES];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     
     [fetchRequest setPredicate:predicate];
     [fetchRequest setSortDescriptors:sortDescriptors];
-    [fetchRequest setRelationshipKeyPathsForPrefetching:[NSArray arrayWithObject:@"Dish"]];
+    //[fetchRequest setRelationshipKeyPathsForPrefetching:[NSArray arrayWithObject:@"Dish"]];
     [fetchRequest setResultType:NSManagedObjectResultType];
     
     NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:managedObjectContext                                             sectionNameKeyPath:nil cacheName:@"SelectStatus"];
@@ -175,7 +178,7 @@
         //stack的問題？
     NSMutableArray *items = [self mutableArrayWithDish:dish];
     
-    NSLog(@"items:%@",items);
+    //NSLog(@"items:%@",items);
     
     EntityOrderedInfo *infoEntity = nil;
 
@@ -220,7 +223,7 @@
 
 
 - (Stack *) mutableArrayWithDish:(EntityDish *)dish{
-    NSLog(@"DISH:%@",dish);
+    //NSLog(@"DISH:%@",dish);
     EntityOrderedInfo *selectedDish = nil;
     //Create a fetch request
     NSFetchRequest  *fetchRequest = [self createSimpleFetchRequest];

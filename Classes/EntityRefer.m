@@ -14,4 +14,8 @@
     return [[NSManagedObjectModel alloc] fetchRequestTemplateForName:name];
 }
 
+- (padOrderAppDelegate *) getApplicationDelegate{
+    return (padOrderAppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
 @end

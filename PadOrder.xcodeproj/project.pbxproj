@@ -51,6 +51,8 @@
 		9114913413305DC5007CFC9D /* closebox.png in Resources */ = {isa = PBXBuildFile; fileRef = 9114913213305DC5007CFC9D /* closebox.png */; };
 		911E1542132C0EB500BB3164 /* PORequestFromWebConnectionDeleagte.m in Sources */ = {isa = PBXBuildFile; fileRef = 911E1541132C0EB500BB3164 /* PORequestFromWebConnectionDeleagte.m */; };
 		911E1544132C15E500BB3164 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911E1543132C15E500BB3164 /* QuartzCore.framework */; };
+		916C02D11349F30D00507BCE /* PadOrder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 916C02CF1349F30D00507BCE /* PadOrder.xcdatamodeld */; };
+		916C02D4134A383E00507BCE /* PadOrderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 916C02D3134A383E00507BCE /* PadOrderAppDelegate.m */; };
 		917038A01333A49B0015AC6D /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 9170389F1333A49B0015AC6D /* 7.png */; };
 		9179B3461329C962002C66AE /* PadOrderLogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9179B3441329C962002C66AE /* PadOrderLogoViewController.m */; };
 		9179B3471329C962002C66AE /* PadOrderLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9179B3451329C962002C66AE /* PadOrderLogoView.xib */; };
@@ -60,6 +62,8 @@
 		9193ABFC1329382C00790AF1 /* no_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 9193ABFB1329382C00790AF1 /* no_image.png */; };
 		91A17838132D3EE600D8E3C9 /* cellAddButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A17837132D3EE500D8E3C9 /* cellAddButton.png */; };
 		91A1783A132D3EEB00D8E3C9 /* cellDetailButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A17839132D3EE900D8E3C9 /* cellDetailButton.png */; };
+		91AA64B4134B64BD00739594 /* RankDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AA64B3134B64BD00739594 /* RankDataTableViewController.m */; };
+		91AA64B7134B693900739594 /* PODishDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AA64B6134B693900739594 /* PODishDataTableViewController.m */; };
 		91BDC274132BDF9200507E06 /* POBillTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDC273132BDF9200507E06 /* POBillTableViewController.m */; };
 		91F1ADA61340675600B6E116 /* padOrderModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F1ADA51340675600B6E116 /* padOrderModelObject.m */; };
 		91F1ADA71340679800B6E116 /* BeginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F1ADA91340679800B6E116 /* BeginView.xib */; };
@@ -87,11 +91,9 @@
 		B95B1182127F1EE7002923E9 /* padOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B95B1181127F1EE7002923E9 /* padOrderViewController.m */; };
 		B9601463124CDCF900A70318 /* padOrderSegmentSetupController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9601462124CDCF900A70318 /* padOrderSegmentSetupController.m */; };
 		B968F78812881E9500D39A87 /* facebook_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B968F78712881E9500D39A87 /* facebook_logo.jpg */; };
-		B96FE09C12A9CF1100A5D08A /* padOrderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FE09B12A9CF1100A5D08A /* padOrderAppDelegate.m */; };
 		B96FE0C812A9DFB200A5D08A /* orange_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = B96FE0C712A9DFB200A5D08A /* orange_circle.png */; };
 		B96FE16412AA29B200A5D08A /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = B96FE16312AA29B200A5D08A /* paper.png */; };
 		B96FE16A12AA358700A5D08A /* menuct.png in Resources */ = {isa = PBXBuildFile; fileRef = B96FE16912AA358700A5D08A /* menuct.png */; };
-		B97288D212449AA70061A614 /* PadOrder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B97288D112449AA70061A614 /* PadOrder.xcdatamodeld */; };
 		B972890312449CCA0061A614 /* padOrderDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B972890212449CCA0061A614 /* padOrderDataManager.m */; };
 		B97479D5129275A700F73358 /* UniversialBarButtomItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B97479D4129275A700F73358 /* UniversialBarButtomItem.m */; };
 		B97479DC1292766A00F73358 /* VarsBarButtomItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B97479DB1292766A00F73358 /* VarsBarButtomItem.m */; };
@@ -111,7 +113,6 @@
 		B9A71B54125CD6CD0002219B /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A71B53125CD6CD0002219B /* Stack.m */; };
 		B9A71D37125D912C0002219B /* EntityOrderedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A71D36125D912C0002219B /* EntityOrderedInfo.m */; };
 		B9A71D73125DEBB50002219B /* OrderedInfoModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A71D72125DEBB50002219B /* OrderedInfoModelController.m */; };
-		B9AC7905124891EE00CF132F /* padOrder.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B9AC7904124891EE00CF132F /* padOrder.xcdatamodel */; };
 		B9B9798B124A0CBA0051A3F6 /* tabBarItem4.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B9798A124A0CBA0051A3F6 /* tabBarItem4.png */; };
 		B9B97991124A0D5F0051A3F6 /* tabBarItem0.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B97990124A0D5F0051A3F6 /* tabBarItem0.png */; };
 		B9B97997124A0DF30051A3F6 /* tabBarItem1.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B97996124A0DF30051A3F6 /* tabBarItem1.png */; };
@@ -203,7 +204,6 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* padOrderAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = padOrderAppDelegate.h; sourceTree = "<group>"; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -285,6 +285,9 @@
 		911E1540132C0EB500BB3164 /* PORequestFromWebConnectionDeleagte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PORequestFromWebConnectionDeleagte.h; sourceTree = "<group>"; };
 		911E1541132C0EB500BB3164 /* PORequestFromWebConnectionDeleagte.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PORequestFromWebConnectionDeleagte.m; sourceTree = "<group>"; };
 		911E1543132C15E500BB3164 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		916C02D01349F30D00507BCE /* PadOrder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PadOrder.xcdatamodel; sourceTree = "<group>"; };
+		916C02D2134A383E00507BCE /* PadOrderAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadOrderAppDelegate.h; sourceTree = "<group>"; };
+		916C02D3134A383E00507BCE /* PadOrderAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PadOrderAppDelegate.m; sourceTree = "<group>"; };
 		9170389F1333A49B0015AC6D /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
 		9179B3431329C962002C66AE /* PadOrderLogoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadOrderLogoViewController.h; sourceTree = "<group>"; };
 		9179B3441329C962002C66AE /* PadOrderLogoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PadOrderLogoViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -298,6 +301,10 @@
 		9193ABFB1329382C00790AF1 /* no_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_image.png; sourceTree = "<group>"; };
 		91A17837132D3EE500D8E3C9 /* cellAddButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellAddButton.png; sourceTree = "<group>"; };
 		91A17839132D3EE900D8E3C9 /* cellDetailButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellDetailButton.png; sourceTree = "<group>"; };
+		91AA64B2134B64BD00739594 /* RankDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankDataTableViewController.h; sourceTree = "<group>"; };
+		91AA64B3134B64BD00739594 /* RankDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankDataTableViewController.m; sourceTree = "<group>"; };
+		91AA64B5134B693900739594 /* PODishDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PODishDataTableViewController.h; sourceTree = "<group>"; };
+		91AA64B6134B693900739594 /* PODishDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PODishDataTableViewController.m; sourceTree = "<group>"; };
 		91BDC272132BDF9200507E06 /* POBillTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POBillTableViewController.h; sourceTree = "<group>"; };
 		91BDC273132BDF9200507E06 /* POBillTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POBillTableViewController.m; sourceTree = "<group>"; };
 		91BDC275132BE07900507E06 /* AllModalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllModalController.h; sourceTree = "<group>"; };
@@ -344,7 +351,6 @@
 		B9601461124CDCF900A70318 /* padOrderSegmentSetupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = padOrderSegmentSetupController.h; sourceTree = "<group>"; };
 		B9601462124CDCF900A70318 /* padOrderSegmentSetupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = padOrderSegmentSetupController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B968F78712881E9500D39A87 /* facebook_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = facebook_logo.jpg; sourceTree = "<group>"; };
-		B96FE09B12A9CF1100A5D08A /* padOrderAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = padOrderAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B96FE0C712A9DFB200A5D08A /* orange_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange_circle.png; sourceTree = "<group>"; };
 		B96FE16312AA29B200A5D08A /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paper.png; sourceTree = "<group>"; };
 		B96FE16912AA358700A5D08A /* menuct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuct.png; sourceTree = "<group>"; };
@@ -378,7 +384,6 @@
 		B9A71D36125D912C0002219B /* EntityOrderedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityOrderedInfo.m; sourceTree = "<group>"; };
 		B9A71D71125DEBB50002219B /* OrderedInfoModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedInfoModelController.h; sourceTree = "<group>"; };
 		B9A71D72125DEBB50002219B /* OrderedInfoModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OrderedInfoModelController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		B9AC7904124891EE00CF132F /* padOrder.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = padOrder.xcdatamodel; sourceTree = "<group>"; };
 		B9B9798A124A0CBA0051A3F6 /* tabBarItem4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarItem4.png; sourceTree = "<group>"; };
 		B9B97990124A0D5F0051A3F6 /* tabBarItem0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarItem0.png; sourceTree = "<group>"; };
 		B9B97996124A0DF30051A3F6 /* tabBarItem1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarItem1.png; sourceTree = "<group>"; };
@@ -553,7 +558,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B97288D112449AA70061A614 /* PadOrder.xcdatamodeld */,
+				916C02CF1349F30D00507BCE /* PadOrder.xcdatamodeld */,
 				B93019AA123A6788007A4F8E /* Xib檔 */,
 			);
 			path = Resources;
@@ -773,12 +778,16 @@
 		B96014E1124CECF400A70318 /* 表格顯示控制器 */ = {
 			isa = PBXGroup;
 			children = (
+				91AA64B5134B693900739594 /* PODishDataTableViewController.h */,
+				91AA64B6134B693900739594 /* PODishDataTableViewController.m */,
 				B9FD363A1245D49200F5553F /* DishDataTableViewController.h */,
 				B9FD363B1245D49200F5553F /* DishDataTableViewController.m */,
 				B97E03BE126FCD120052A098 /* DishDataTableView.h */,
 				B97E03BF126FCD120052A098 /* DishDataTableView.m */,
 				B9D89719126C50D500366547 /* DishTableCellView.h */,
 				B9D8971A126C50D500366547 /* DishTableCellView.m */,
+				91AA64B2134B64BD00739594 /* RankDataTableViewController.h */,
+				91AA64B3134B64BD00739594 /* RankDataTableViewController.m */,
 			);
 			name = "表格顯示控制器";
 			sourceTree = "<group>";
@@ -925,8 +934,8 @@
 		B9D895E9126C299900366547 /* padOrderAppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				1D3623240D0F684500981E51 /* padOrderAppDelegate.h */,
-				B96FE09B12A9CF1100A5D08A /* padOrderAppDelegate.m */,
+				916C02D2134A383E00507BCE /* PadOrderAppDelegate.h */,
+				916C02D3134A383E00507BCE /* PadOrderAppDelegate.m */,
 			);
 			name = padOrderAppDelegate;
 			sourceTree = "<group>";
@@ -1296,10 +1305,8 @@
 				B9E59236123925720040CBEC /* OrderedDetailViewController.m in Sources */,
 				B9E5926012392C380040CBEC /* padOrderAlertViewDelegate.m in Sources */,
 				B9301C63123BC868007A4F8E /* MemberViewController.m in Sources */,
-				B97288D212449AA70061A614 /* PadOrder.xcdatamodeld in Sources */,
 				B972890312449CCA0061A614 /* padOrderDataManager.m in Sources */,
 				B9FD363C1245D49200F5553F /* DishDataTableViewController.m in Sources */,
-				B9AC7905124891EE00CF132F /* padOrder.xcdatamodel in Sources */,
 				B9601463124CDCF900A70318 /* padOrderSegmentSetupController.m in Sources */,
 				B9FA7CE8124EFD43006A1111 /* EntityDish.m in Sources */,
 				B9FA7CEB124F289C006A1111 /* EntityDescribe.m in Sources */,
@@ -1336,7 +1343,6 @@
 				B99330C3129673F40022B1DA /* CustomAlertView.m in Sources */,
 				B99330DE1296C3FF0022B1DA /* CustomAlertViewViewController.m in Sources */,
 				B993332F12977E530022B1DA /* SetInfomationViewController.m in Sources */,
-				B96FE09C12A9CF1100A5D08A /* padOrderAppDelegate.m in Sources */,
 				B9DDC63012AB3FE20027BAD1 /* GStep1ViewController.m in Sources */,
 				B9DDC65212AB53240027BAD1 /* GuideSetpViewController.m in Sources */,
 				B9DDC68312AB56420027BAD1 /* GStepControllerCollection.m in Sources */,
@@ -1381,6 +1387,10 @@
 				91BDC274132BDF9200507E06 /* POBillTableViewController.m in Sources */,
 				911E1542132C0EB500BB3164 /* PORequestFromWebConnectionDeleagte.m in Sources */,
 				91F1ADA61340675600B6E116 /* padOrderModelObject.m in Sources */,
+				916C02D11349F30D00507BCE /* PadOrder.xcdatamodeld in Sources */,
+				916C02D4134A383E00507BCE /* PadOrderAppDelegate.m in Sources */,
+				91AA64B4134B64BD00739594 /* RankDataTableViewController.m in Sources */,
+				91AA64B7134B693900739594 /* PODishDataTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1505,14 +1515,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B97288D112449AA70061A614 /* PadOrder.xcdatamodeld */ = {
+		916C02CF1349F30D00507BCE /* PadOrder.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B9AC7904124891EE00CF132F /* padOrder.xcdatamodel */,
+				916C02D01349F30D00507BCE /* PadOrder.xcdatamodel */,
 			);
-			currentVersion = B9AC7904124891EE00CF132F /* padOrder.xcdatamodel */;
-			name = PadOrder.xcdatamodeld;
-			path = padOrder.xcdatamodeld;
+			currentVersion = 916C02D01349F30D00507BCE /* PadOrder.xcdatamodel */;
+			path = PadOrder.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

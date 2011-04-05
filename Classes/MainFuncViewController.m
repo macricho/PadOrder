@@ -144,7 +144,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
    [super viewDidLoad];
-    NSLog(@"View Did Load");
+    //NSLog(@"View Did Load");
     //self.funcsTabBarController.tabBar.frame = CGRectMake(0, 0, 200, 200);
     
     UITabBarItem *item1 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:5];
@@ -202,7 +202,7 @@
     //@synthesize funcsTabBarController;
     //@synthesize managedObjectContext;
     self.funcsTabBarController = nil;
-    NSLog(@"????");
+    //NSLog(@"????");
 
 }
 

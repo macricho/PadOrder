@@ -20,9 +20,11 @@
 #pragma mark Self-Method
 
 - (id) initWithController:(DishViewController *)Controller andTableView:(UITableView *)aTableView{
-    if(self = [super init]){
+    self = [super init];
+    if(self){
         self.dishViewController = Controller;
         self.tableView = aTableView;
+        //self.tableView.allowsSelection = NO;
     }
     return self;
 }
@@ -30,17 +32,11 @@
 - (IBAction) changeSegmentSelect:(id)sender{
     //The count of section in table view have to be over zero
     
-    ////(@"???");
-    //NSFetchedResultsController *fetch = [self.dishViewController.tableViewController fetchedResultsController];
-
-    ////(@"%d",self.dishViewController.segmentControl.selectedSegmentIndex);
     [self.dishViewController refreshFetchedResultsControllerWithIndex:self.dishViewController.segmentControl.selectedSegmentIndex];
     if([self.tableView numberOfSections] > 0){
-        ////(@"tableView:%@",self.tableView);
-        NSIndexPath *beSelect = [NSIndexPath indexPathForRow:0 inSection:0];
-        self.tableView.allowsSelection = YES;
-        [self.tableView selectRowAtIndexPath:beSelect animated:NO scrollPosition:UITableViewScrollPositionTop];
-        self.tableView.allowsSelection = NO;
+        NSIndexPath *topIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+
+        [self.tableView scrollToRowAtIndexPath:topIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
         [self.tableView reloadData];
     }
 }

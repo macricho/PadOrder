@@ -139,14 +139,11 @@
     set.Set_Name = SET_NAME;
     set.Set_Note = @"濃濃的異國風情，是許多人嚮往的世界。異國主廚系列將帶領著您，品嚐各個不同角落的特色風味，讓您不用出遠門，也能環遊世界喔！\n經典代表：\n東洋香檸雞腿飯";
     
-    
     EntityDescribe *describe = [[EntityDescribe alloc] initWithEntity:describeEntity insertIntoManagedObjectContext:self.managedObjectContext];
     
     describe.Describe_Complete = @"多汁鮮嫩的雞腿排先以多種香料醃製入味，散發著清新檸檬香氣，可以充分品嚐雞腿肉的鮮美滋味又不覺得油膩，是一道相當受歡迎的簡餐。";
     
     describe.Describe_Simple = @"多汁鮮嫩的雞腿排先以多種香料醃製入味，散發著清新檸檬香氣，可以充分品嚐雞腿肉的鮮美滋味又不覺得油膩，是一道相當受歡迎的簡餐。";
-    
-    [self.managedObjectContext save:nil];
     
     //2010/10/29 現在要想辦法取出Kind物件，使用OrderKindModelController
     
@@ -218,7 +215,6 @@
     dish.Dish_Price = [NSNumber numberWithInt:149];
     dish.Update_Date = [NSDate date];
     image.Dish = dish;
-    describe.Dish = dish;
     [self.managedObjectContext save:nil];
     
     

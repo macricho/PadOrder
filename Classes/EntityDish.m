@@ -7,6 +7,7 @@
 //
 
 #import "EntityDish.h"
+#import "EntityImage.h"
 
 @implementation EntityDish
 @dynamic Dish_Name;
@@ -17,46 +18,21 @@
 @dynamic DishSet;
 @dynamic Kind;
 @dynamic Images;
-/*
-- (UIImage *) Dish_Image{
-    //(@"Enter");
-    //NSString *documentPath = [[self padOrderApp] applicationDocumentsDirectory];
-    documentPath = [documentPath stringByAppendingPathComponent:@"DishImages/"];
-    documentPath = [documentPath stringByAppendingPathComponent:@"0.png"];
-    self.Dish_Image = [UIImage imageWithContentsOfFile:documentPath];
-    //(@"Leave");
-    
-    return self.Dish_Image;
-;
-}*/
 
-/*
--(NSString *) dish_name{
+
+- (NSURL *)getURLForMainImageFullPath{
     
+    NSURL *url = [[self getApplicationDelegate] applicationDocumentsDirectory];
+    for (EntityImage *image in self.Images) {
+        if ([image.Dish isEqual:self]) {
+            url = [url URLByAppendingPathComponent:image.Image_Path];
+            url = [url URLByAppendingPathComponent:image.Image_FileName];
+            //return image;
+            break;
+        }
+    }
+    return url;
 }
 
-- (NSString *) dish_no{
-    //(@"Dish Class Dish");
-    return self.dish_no;
-}
-
-- (NSDate *) update_date{
-    
-}
-*/
-/*
-- (EntityImage *) Images{
-    //(@"Here");
-    
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Dishes_Images" inManagedObjectContext:[self managedObjectContext]];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"IsMainImage = YES"];
-    NSError *error;
-    [request setEntity:entity];
-    [request setPredicate:predicate];
-    //[request set]
-    return [[[self managedObjectContext] executeFetchRequest:request error:&error] objectAtIndex:0];
-    
-}*/
 
 @end

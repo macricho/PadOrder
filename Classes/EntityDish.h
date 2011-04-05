@@ -27,15 +27,9 @@
 @class EntityOrderKind;
 @class EntityImage;
 @interface EntityDish : EntityRefer{
-    NSString *Dish_Name;
-    NSString *Dish_No;
-    NSDate *Update_Date;
-    EntityDescribe *Describe;
-    EntityDishSet *DishSet;
-    NSNumber *Dish_Price;
-    EntityOrderKind *Kind;
+
 }
-@property (nonatomic, retain) EntityImage *Images;
+@property (nonatomic, retain) NSArray *Images;
 @property (nonatomic, retain) NSString *Dish_Name;
 @property (nonatomic, retain) NSString *Dish_No;
 @property (nonatomic, retain) NSDate *Update_Date;
@@ -43,5 +37,7 @@
 @property (nonatomic, retain) EntityDishSet *DishSet;
 @property (nonatomic, retain) EntityOrderKind *Kind;
 @property (nonatomic, retain) NSNumber *Dish_Price;
+
+- (NSURL *)getURLForMainImageFullPath;
 
 @end
