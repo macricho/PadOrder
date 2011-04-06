@@ -152,7 +152,9 @@
         //UITabBarItem *item3 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:2];
         //self.funcsTabBarController.tabBar.items = [NSArray arrayWithObjects:item1,item2,item3,nil];
     self.funcsTabBarController.viewControllers = [self createTabBarArray];
-
+    
+    //self.funcsTabBarController.tabBar.backgroundColor = [UIColor redColor];
+    
     //這裡要設定第一個要被顯示的初始畫面
     UINavigationController *setupFirstNavController = [self.funcsTabBarController.viewControllers objectAtIndex:1];
     

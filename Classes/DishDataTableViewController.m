@@ -189,7 +189,45 @@
 
 - (void) buttonDetail:(id)sender{
     VarsButton *button = (VarsButton *)sender;
-    [self tableView:self.tableView accessoryButtonTappedForRowWithIndexPath:button.indexPath];
+    NSIndexPath *indexPath = button.indexPath;
+    
+    self.detailViewController = [[DishDetailViewController alloc] initWithNibName:@"DishDetailView" bundle:[NSBundle mainBundle] indexPath:indexPath];
+    
+    EntityDish *dish = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    DishTableCellView *cell = (DishTableCellView *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    detailViewController.title = @"餐點介紹";
+    detailViewController.tableViewController = self;
+    detailViewController.dishTitle.text = dish.Dish_Name;
+	detailViewController.addButton.managerObject = dish;
+    detailViewController.dishDescription.text = dish.Describe.Describe_Complete;
+    detailViewController.indexPath = indexPath;
+    detailViewController.dishPrice.text = [NSString stringWithFormat:@"NT $%@",dish.Dish_Price];
+    [detailViewController.addButton setBackgroundImage:cell.submitButton.currentBackgroundImage forState:UIControlStateNormal];
+    detailViewController.addButton.fetchedResultsController = self.fetchedResultsController;
+	
+    CGRect addButtonFrame = detailViewController.addButton.frame;
+    CGRect submitButtonFrame = cell.submitButton.frame;
+    CGPoint buttonOrigin = addButtonFrame.origin;
+    CGSize buttonSize = submitButtonFrame.size;
+    
+    detailViewController.addButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
+    [detailViewController.addButton setTitle:cell.submitButton.titleLabel.text forState:UIControlStateNormal];
+	[detailViewController.addButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    detailViewController.dishImageView.image = cell.dishImageView.image;
+    detailViewController.dishImageView.layer.cornerRadius = cell.dishImageView.layer.cornerRadius;
+    detailViewController.dishImageView.layer.masksToBounds = YES;
+    //detailViewController.dishImageView.layer.shadowRadius = 10;
+    //detailViewController.dishImageView.layer.borderWidth = 2;
+    //detailViewController.dishImageView.layer.doubleSided = YES;
+    detailViewController.navigationBar = self.navigationController.navigationBar;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    //self.navigationController.navigationBar.hidden = YES;
+    
+    
+    
+    //[self tableView:self.tableView accessoryButtonTappedForRowWithIndexPath:button.indexPath];
 }
 
 - (void) buttonAction:(id)sender{
@@ -247,6 +285,7 @@
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
     if ((self = [super initWithStyle:style])) {
         [self setTableView:[[DishDataTableView alloc] initWithFrame:self.tableView.frame style:style]];
+        
     }
     return self;
 }
@@ -271,7 +310,9 @@
     self.appDelegate = (padOrderAppDelegate *)[[UIApplication sharedApplication] delegate];
     self.tableView.allowsSelection = NO;
     self.tableView.layer.cornerRadius = 10;
+    
     self.moveAnimationController = [[MoveAnimationController alloc] init];
+    
     padOrderSearchBarDelegate *searchDelegate = [[padOrderSearchBarDelegate alloc] init];
     searchDelegate.dishDataTableViewController = self;
     self.searchDisplayController.delegate = searchDelegate;
@@ -321,38 +362,8 @@
 //設定詳細餐點資訊的物件顯示
 - (void) tableView:(UITableView *)tableView 
     accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
-    self.detailViewController = [[DishDetailViewController alloc] initWithNibName:@"DishDetailView" bundle:[NSBundle mainBundle] indexPath:indexPath];
-    EntityDish *dish = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    //NSLog(@"ACCESS");
     
-    DishTableCellView *cell = (DishTableCellView *)[self.tableView cellForRowAtIndexPath:indexPath];
-    
-    detailViewController.title = @"餐點介紹";
-    detailViewController.tableViewController = self;
-    detailViewController.dishTitle.text = dish.Dish_Name;
-	detailViewController.addButton.managerObject = dish;
-    detailViewController.dishDescription.text = dish.Describe.Describe_Complete;
-    detailViewController.indexPath = indexPath;
-    detailViewController.dishPrice.text = [NSString stringWithFormat:@"NT $%@",dish.Dish_Price];
-    [detailViewController.addButton setBackgroundImage:cell.submitButton.currentBackgroundImage forState:UIControlStateNormal];
-    detailViewController.addButton.fetchedResultsController = self.fetchedResultsController;
-	
-    CGRect addButtonFrame = detailViewController.addButton.frame;
-    CGRect submitButtonFrame = cell.submitButton.frame;
-    CGPoint buttonOrigin = addButtonFrame.origin;
-    CGSize buttonSize = submitButtonFrame.size;
-    
-    detailViewController.addButton.frame = CGRectMake(buttonOrigin.x, buttonOrigin.y, buttonSize.width, buttonSize.height);
-    [detailViewController.addButton setTitle:cell.submitButton.titleLabel.text forState:UIControlStateNormal];
-	[detailViewController.addButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-    detailViewController.dishImageView.image = cell.dishImageView.image;
-    detailViewController.dishImageView.layer.cornerRadius = cell.dishImageView.layer.cornerRadius;
-    detailViewController.dishImageView.layer.masksToBounds = YES;
-    //detailViewController.dishImageView.layer.shadowRadius = 10;
-    //detailViewController.dishImageView.layer.borderWidth = 2;
-    //detailViewController.dishImageView.layer.doubleSided = YES;
-    detailViewController.navigationBar = self.navigationController.navigationBar;
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    //self.navigationController.navigationBar.hidden = YES;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

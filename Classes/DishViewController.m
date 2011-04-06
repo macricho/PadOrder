@@ -40,6 +40,7 @@
         self.segmentArray = [NSArray arrayWithObject:@"Dishes"];//只是先指定
         //[NSArray arrayWithObjects:@"主廚套餐",@"主菜單點",@"特色小吃",@"飲品甜點",nil];
         self.padOrderDelegate = (padOrderAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
     }
     return self;
 }
@@ -49,9 +50,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.dataSource = self.tableViewController;
-    self.tableView.delegate = self.tableViewController;
-
+    //self.tableView.dataSource = self.tableViewController;
+    //self.tableView.delegate = self.tableViewController;
+    self.tableView.allowsSelection = NO;
+    
     self.tableViewController.orderedListViewController = [[self.splitViewController viewControllers] objectAtIndex:0];
     
     [self refreshFetchedResultsControllerWithIndex:0];
@@ -78,7 +80,7 @@
         self.tableViewController.fetchedResultsController = aFetchedResultsController;
     }
     
-    [self.tableViewController.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 

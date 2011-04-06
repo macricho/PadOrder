@@ -99,11 +99,14 @@
     self.navigationController.navigationBar.tintColor = [UIColor grayColor];
 
     self.contentSizeForViewInPopover = [self getContentSizeInPopover];
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSInteger DESK_NO = [userDefault integerForKey:@"DESK_NO"];
-    NSString *deskTitle = [NSString stringWithFormat:@"第%d桌",DESK_NO];
     
-    self.title = deskTitle;
+    
+    //NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    //NSInteger DESK_NO = [userDefault integerForKey:@"DESK_NO"];
+    //NSString *deskTitle = [NSString stringWithFormat:@"第%d桌",DESK_NO];
+    
+    //self.title = deskTitle;
+    self.title = @"點餐清單";
     self.navigationItem.prompt = nil;
     
     //self.title = [NSString stringWithFormat:@"第%d桌",DESK_NO];
@@ -122,6 +125,17 @@
     
     self.cookingTableViewController = [[CookingTableViewController alloc] initWithStyle:UITableViewStylePlain];
     
+    for (UIView *segment  in self.segmentControl.subviews) {
+        UILabel *segmentLabel = [segment.subviews objectAtIndex:0];
+        
+        //segmentLabel.textColor = [UIColor blackColor];
+        //segmentLabel.shadowColor = [UIColor whiteColor];
+        segmentLabel.font = [UIFont fontWithName:segmentLabel.font.fontName size:20];
+        segmentLabel.frame = CGRectMake(segmentLabel.frame.origin.x, segmentLabel.frame.origin.y, segmentLabel.frame.size.width+30, segmentLabel.frame.size.height);
+   }
+    
+    
+    //NSLog(@"%@",[[[self.segmentControl.subviews objectAtIndex:0] subviews] objectAtIndex:0]);
     [self.segmentControl addTarget:self action:@selector(switchTableView:) forControlEvents:UIControlEventValueChanged];
     
     [self refreshPriceLabel];
@@ -162,6 +176,14 @@
 }
 
 - (void) switchTableView:(id)sender{
+    for (UIView *segment  in self.segmentControl.subviews) {
+        UILabel *segmentLabel = [segment.subviews objectAtIndex:0];
+        
+        //segmentLabel.textColor = [UIColor blackColor];
+        //segmentLabel.shadowColor = [UIColor whiteColor];
+        segmentLabel.font = [UIFont fontWithName:segmentLabel.font.fontName size:20];
+        segmentLabel.frame = CGRectMake(segmentLabel.frame.origin.x, segmentLabel.frame.origin.y, segmentLabel.frame.size.width+30, segmentLabel.frame.size.height);
+    }
     //分兩部分
     //1. 設定固定的TableView DataSource & Delegate
     //透過指定資料來源來設定同一個TableView要顯示哪些資料
@@ -365,6 +387,7 @@
     }
     
     [self.tableView reloadData];
+    NSLog(@"%@",indexPath);
     if(indexPath != nil) [self.tableView selectRowAtIndexPath: indexPath animated:boolean scrollPosition:UITableViewScrollPositionBottom];
     [UIView commitAnimations];
 }

@@ -20,10 +20,6 @@
         // Custom initialization
         
         //DishDataTableViewController *dishDataTableViewController = [[DishDataTableViewController alloc] initWithStyle:UITableViewStylePlain];
-        
-        RankDataTableViewController *rankDataTableViewcontroller = [[RankDataTableViewController alloc] initWithStyle:UITableViewStylePlain];
-        
-        self.tableViewController =  rankDataTableViewcontroller;
 
         
         NSArray *array = [[[OrderKindModelController alloc] init] segmentTitleArrayWithTypeNo:[NSNumber numberWithInt:2]];
@@ -45,7 +41,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.topTitleLabel.text = @"Ranking";
-    self.navigationItem.prompt = @"人氣排行";
+    //self.navigationItem.prompt = @"人氣排行";
+    
+    RankDataTableViewController *rankDataTableViewcontroller = [[RankDataTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    self.tableViewController =  rankDataTableViewcontroller;
+    
+    self.tableView.dataSource = self.tableViewController;
+    self.tableView.delegate = self.tableViewController;
+    
+    
+    
     //self.bgTopImageView.image = [UIImage imageNamed:@"tableViewBgTopRank.png"];
     //[self.tableViewController setNavigationController:self.navigationController];
 }

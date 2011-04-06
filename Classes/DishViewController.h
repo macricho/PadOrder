@@ -35,6 +35,7 @@
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segmentControl;
 @property (nonatomic, retain) IBOutlet UIImageView *bgTopImageView;
 @property (nonatomic, retain) IBOutlet UILabel *contentTextLabel;
+
 - (void) refreshFetchedResultsControllerWithIndex:(NSInteger)index;
 
 @end

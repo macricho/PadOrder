@@ -140,13 +140,14 @@
     NSEntityDescription *entity = self.orderedDishModelController.entity;
     NSManagedObjectContext *managedObjectContext = self.orderedDishModelController.managedObjectContext;
     UIViewAnimationTransition transition = UIViewAnimationTransitionCurlUp;
-    //NSLog(@"Bu:%d",buttonIndex);
+    
+    NSInteger buttonCheck = buttonIndex + actionSheet.tag;
     
     
-    buttonIndex += actionSheet.tag;    
+    //buttonIndex += actionSheet.tag;    
     
     
-    switch (buttonIndex) {
+    switch (buttonCheck) {
         case 0: 
             
             //刪除這個編號的全部
@@ -160,6 +161,7 @@
         case 1: //加點一份
             //insertDish = [[EntityOrderedInfo alloc] initWithEntity:entity insertIntoManagedObjectContext:[selectedInfo managedObjectContext]];
             //insertDish = selectedInfo.Order;   
+            //NSLog(@"????");
             [self.orderedInfoModelController insertBeOrderedDish:selectedInfo.Dish];
             break;
         case 2:{ 
@@ -190,7 +192,7 @@
             break;
         }
     }
-    
+    //NSLog(@"%d,%d",buttonIndex,actionSheet.cancelButtonIndex);
     if(buttonIndex != actionSheet.cancelButtonIndex){
         //重新擷取資料庫資料，以便顯示的資料是最新的
     [orderedInfoModelController refreshFetchedResultsController:fetchedResultsController];  
@@ -206,7 +208,7 @@
 
 - (void) clearAllOrderingDish{
     
-    NSFetchedResultsController *fetchedController = [self.orderedInfoModelController fetchedDishSelectStatus:@"1"];
+    NSFetchedResultsController *fetchedController = [self.orderedInfoModelController fetchedDishSelectStatus:0];
     
     for (EntityOrderedInfo *info in [fetchedController fetchedObjects]) {
         [self.orderedInfoModelController deleteInfoAndRelativeOrderedDish:info];
@@ -304,7 +306,7 @@
                                                           stringWithFormat:@"正在更改：%@",selected.Dish.Dish_Name] 
                                                 delegate:self
                                        cancelButtonTitle:@"返回清單" 
-                                  destructiveButtonTitle:nil 
+                                  destructiveButtonTitle:nil
                                        otherButtonTitles:@"再加點一份",nil];  
             sheet.tag = 1;
             break;

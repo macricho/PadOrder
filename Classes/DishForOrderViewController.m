@@ -17,9 +17,6 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
-        DishDataTableViewController *dishDataTableViewController = [[DishDataTableViewController alloc] initWithStyle:UITableViewStylePlain];
-        
-        self.tableViewController = dishDataTableViewController;
         
         NSArray *array = [[[OrderKindModelController alloc] init] segmentTitleArrayWithTypeNo:[NSNumber numberWithInt:1]];
         
@@ -40,7 +37,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.topTitleLabel.text = @"Menu";
-    self.navigationItem.prompt = @"點餐服務";
+    //self.navigationItem.prompt = @"點餐服務";
+    
+    DishDataTableViewController *dishDataTableViewController = [[DishDataTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    dishDataTableViewController.navigationController = self.navigationController;
+    
+    self.tableViewController = dishDataTableViewController;
+    
+    //self.tableView = self.tableViewController.tableView;
+    self.tableViewController.tableView = self.tableView;
+    self.tableView.dataSource = self.tableViewController;
+    self.tableView.delegate = self.tableViewController;
+    
     
     self.segmentSetupController = [[padOrderSegmentSetupController alloc] initWithController:self andTableView:self.tableView];
     self.segmentSetupController.fetchedResultsController = self.tableViewController.fetchedResultsController;
